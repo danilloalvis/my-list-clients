@@ -2,9 +2,10 @@ import styled, {css} from 'styled-components/native';
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 import DatePicker from 'react-native-datepicker';
 
-const Container = styled.View`
+const Container = styled.View.attrs({
+  pointerEvents: 'none',
+})`
   width: 100%;
-  margin-top: 100px;
 `;
 
 const Label = styled.Text`
@@ -12,13 +13,15 @@ const Label = styled.Text`
   font-size: ${({theme}) => theme.textNormal};
   font-weight: 400;
   margin-bottom: 5;
+  margin-top: 10;
 `;
 
-const InputContainer = styled.View`
+const InputContainer = styled.View.attrs({
+  pointerEvents: 'none',
+})`
+  width: 100%;
   justify-content: center;
-  margin-top: 20px;
   margin-bottom: 20px;
-  flex: 1;
 `;
 
 const InputDate = styled(DatePicker).attrs(({theme}) => ({
@@ -26,12 +29,14 @@ const InputDate = styled(DatePicker).attrs(({theme}) => ({
     dateIcon: null,
     dateInput: {
       width: '100%',
+      paddingRight: 10,
+      paddingLeft: 10,
       backgroundColor: theme.colors.inputBackground,
-      height: theme.formHeight,
-      borderRadius: theme.radius,
-      paddingLeft: 18,
-      borderWidth: theme.borderWidth,
       borderColor: theme.colors.borderColor,
+      borderRadius: theme.radius,
+      borderWidth: theme.borderWidth,
+      height: theme.formHeight,
+      fontSize: theme.textNormal,
       alignItems: 'flex-start',
       justifyContent: 'center',
     },
@@ -40,7 +45,7 @@ const InputDate = styled(DatePicker).attrs(({theme}) => ({
   },
 }))`
   width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
 `;
 
 const IconContainer = styled.TouchableOpacity`
@@ -50,7 +55,7 @@ const IconContainer = styled.TouchableOpacity`
   width: 30px;
   height: ${({theme}) => theme.formHeight};
   right: 0;
-  top: 50%;
+  bottom: -5;
 `;
 
 const Icon = styled(FontAwesome)`

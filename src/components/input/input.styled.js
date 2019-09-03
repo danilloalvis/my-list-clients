@@ -51,7 +51,7 @@ const InputForm = styled.TextInput.attrs(({theme}) => ({
     return css`
       padding-right: ${iconRight ? (loading ? '70px' : '40px') : '10px'};
       padding-left: ${iconLeft ? '40px' : '10px'};
-      background-color: #ffffff;
+      background-color: ${theme.colors.inputBackground};
       border-color: ${theme.colors.borderColor};
       border-radius: ${theme.radius};
       border-width: ${theme.borderWidth};
@@ -83,6 +83,7 @@ const Label = styled.Text`
   font-size: ${({theme}) => theme.textNormal};
   font-weight: 400;
   margin-bottom: 5;
+  margin-top: 10;
 `;
 
 const Loading = styled.ActivityIndicator`

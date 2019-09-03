@@ -17,21 +17,30 @@ const Main = () => {
 
   return (
     <Fragment>
-      <SafeAreaView>
+      <SafeAreaView style={{flex: 1}}>
         <StatusBar barStyle="dark-content" />
         <View style={{flex: 1, padding: 20}}>
-          {/* <Input
+          <Input
             labelText="Pesquisar"
             value={text}
             onChangeText={setText}
             iconLeft="account"
             iconRight="filter"
             loading
-          /> */}
+          />
+
           <DatePicker
             value={date}
             onDateChange={val => setDate(val)}
             labelText="Data"
+          />
+          <Input
+            labelText="Pesquisar"
+            value={text}
+            onChangeText={setText}
+            iconLeft="account"
+            iconRight="filter"
+            loading
           />
         </View>
       </SafeAreaView>

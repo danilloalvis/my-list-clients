@@ -6,14 +6,25 @@
  * @flow
  */
 
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import {StatusBar, Text} from 'react-native';
 import {Touchable, Gradient, Input, Avatar, DatePicker} from './components';
 import {SafeAreaView} from 'react-navigation';
+import {ClientAPI} from './api';
 const Main = () => {
   const [text, setText] = useState('');
   const [date, setDate] = useState('');
 
+  useEffect(() => {
+    _init();
+  }, []);
+
+  const _init = async () => {
+    console.log('====================================');
+    const result = await ClientAPI.list();
+    console.log('result', result);
+    console.log('====================================');
+  };
   return (
     <Fragment>
       <SafeAreaView>

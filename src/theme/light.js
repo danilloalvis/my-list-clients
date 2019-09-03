@@ -1,7 +1,7 @@
 const light = {
   formHeight: 40,
   radius: 15,
-  borderWidth: 0,
+  borderWidth: 1,
   textSmall: 14,
   textNormal: 18,
   textLarge: 22,
@@ -17,7 +17,7 @@ const light = {
     secondaryDark: '#0070ae',
     secondaryText: '#FFFFFF',
 
-    background: '#FDFDFD',
+    background: '#F9F9F9',
     backgroundGradient: ['#3a607e', '#2d475c'],
     grey: '#EEEEF3',
     greyDark: '#bdbdbd',

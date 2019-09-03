@@ -8,9 +8,9 @@
 
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {Parallax, Input, ItemClient, Gradient} from '../../components';
+import {Parallax, Input, ItemClient} from '../../components';
 import {FlatList} from 'react-native-gesture-handler';
-
+import {Container, Search, SearchContainer} from './home.styled';
 const clients = [
   {
     name: 'Carl Jhonson',
@@ -77,22 +77,9 @@ const HomeScreen = () => {
   const [search, setSearch] = useState('');
   const _header = () => {
     return (
-      <Gradient
-        angle={45}
-        style={{
-          width: '100%',
-          height: 130,
-          alignContent: 'center',
-          justifyContent: 'center',
-          padding: 20,
-        }}>
-        <Input
-          iconLeft="magnify"
-          iconRight="filter-variant"
-          value={search}
-          onChangeText={setSearch}
-        />
-      </Gradient>
+      <SearchContainer style={{height: 130}}>
+        <Search value={search} onChangeText={setSearch} />
+      </SearchContainer>
     );
   };
 
@@ -108,14 +95,14 @@ const HomeScreen = () => {
   };
   return (
     <Parallax headerHeight={130} headerComponent={_header}>
-      <View key="body" style={{width: '100%'}}>
+      <Container>
         <FlatList
           data={clients}
           renderItem={_renderItems}
           scrollEnabled={false}
           keyExtractor={(item, index) => `client${index}`}
         />
-      </View>
+      </Container>
     </Parallax>
   );
 };

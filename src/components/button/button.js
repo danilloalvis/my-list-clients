@@ -5,7 +5,7 @@ import {ViewPropTypes} from 'react-native';
 import PropTypes from 'prop-types';
 
 const CustomButton = ({
-  containerStyle,
+  style,
   titleStyle,
   onPress,
   title,
@@ -25,36 +25,36 @@ const CustomButton = ({
     let fontColor = theme.colors.primary;
 
     if (secondary) {
-      containerStyle = {
+      style = {
         backgroundColor: theme.colors.secondary,
         borderColor: theme.colors.secondary,
-        ...containerStyle,
+        ...style,
       };
       fontColor = theme.colors.secondary;
     }
 
     if (success) {
-      containerStyle = {
+      style = {
         backgroundColor: theme.colors.success,
         borderColor: theme.colors.success,
-        ...containerStyle,
+        ...style,
       };
       fontColor = theme.colors.success;
     }
 
     if (danger) {
-      containerStyle = {
+      style = {
         backgroundColor: theme.colors.danger,
         borderColor: theme.colors.danger,
-        ...containerStyle,
+        ...style,
       };
       fontColor = theme.colors.danger;
     }
 
     if (outline) {
-      containerStyle = {
+      style = {
         backgroundColor: 'transparent',
-        ...containerStyle,
+        ...style,
       };
 
       titleStyle = {
@@ -63,7 +63,7 @@ const CustomButton = ({
     }
   }
   if (!outline) {
-    containerStyle = {
+    style = {
       shadowColor: '#000',
       shadowOffset: {
         width: 0,
@@ -73,12 +73,12 @@ const CustomButton = ({
       shadowRadius: 3.84,
 
       elevation: 5,
-      ...containerStyle,
+      ...style,
     };
   }
 
   return (
-    <Container onPress={onPress} disabled={disabled} style={containerStyle}>
+    <Container onPress={onPress} disabled={disabled} style={style}>
       <Title style={titleStyle}>{title}</Title>
     </Container>
   );
@@ -87,7 +87,7 @@ const CustomButton = ({
 const Button = withTheme(CustomButton);
 
 Button.propTypes = {
-  containerStyle: ViewPropTypes.style,
+  style: ViewPropTypes.style,
   titleStyle: PropTypes.object,
   onPress: PropTypes.func,
   title: PropTypes.string,

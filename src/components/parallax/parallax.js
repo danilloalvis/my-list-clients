@@ -43,7 +43,7 @@ export default Parallax = ({headerHeight, children, headerComponent}) => {
     extrapolate: 'clamp',
   });
 
-  const imageTranslate = animatedScrollY.interpolate({
+  const headerContentTranslate = animatedScrollY.interpolate({
     inputRange: [0, headerScrollDistance],
     outputRange: [0, 100],
     extrapolate: 'clamp',
@@ -52,12 +52,6 @@ export default Parallax = ({headerHeight, children, headerComponent}) => {
   const headerScale = animatedScrollY.interpolate({
     inputRange: [0, headerScrollDistance / 2, headerScrollDistance],
     outputRange: [1, 0, 0],
-    extrapolate: 'clamp',
-  });
-
-  const titleTranslate = animatedScrollY.interpolate({
-    inputRange: [0, headerScrollDistance / 2, headerScrollDistance],
-    outputRange: [0, 0, -8],
     extrapolate: 'clamp',
   });
 
@@ -72,7 +66,7 @@ export default Parallax = ({headerHeight, children, headerComponent}) => {
       <Animated.View
         style={{
           flex: 1,
-          transform: [{scale: headerScale}, {translateY: titleTranslate}],
+          transform: [{scale: headerScale}],
         }}>
         {headerComponent()}
       </Animated.View>
@@ -135,7 +129,7 @@ export default Parallax = ({headerHeight, children, headerComponent}) => {
             styles.headerLarge,
             {
               height: headerMaxHeight,
-              transform: [{translateY: imageTranslate}],
+              transform: [{translateY: headerContentTranslate}],
             },
           ]}>
           {_headerComponent()}

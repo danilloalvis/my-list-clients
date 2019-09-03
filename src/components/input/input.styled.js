@@ -49,7 +49,7 @@ const InputForm = styled.TextInput.attrs(({theme}) => ({
       padding-left: ${iconLeft ? '40px' : '10px'};
       background-color: #ffffff;
       border-color: ${theme.colors.borderColor};
-      border-radius: 4;
+      border-radius: ${theme.radius};
       border-width: ${theme.borderWidth};
       height: ${theme.formHeight};
       font-size: ${theme.textNormal};

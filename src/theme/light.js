@@ -1,6 +1,6 @@
 const light = {
   formHeight: 50,
-  radius: 40,
+  radius: 15,
   borderWidth: 2,
   textSmall: 14,
   textNormal: 18,
@@ -29,10 +29,10 @@ const light = {
 
     borderColor: '#85BAE1',
     inputBackground: 'transparent',
-    inputTextColor: '#ffffff',
+    inputTextColor: '#000',
     placeholderColor: 'rgba(255,255,255,0.5)',
-    textColor: '#ffffff',
-    labelColor: '#ffffff',
+    textColor: '#000',
+    labelColor: '#000',
   },
   data: null,
 };

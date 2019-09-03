@@ -1,7 +1,7 @@
 import {TextInputMask} from 'react-native-masked-text';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styled, {css} from 'styled-components/native';
-
+import Touchable from '../touchable/touchable';
 const ErrorMessage = styled.Text`
   color: ${({theme}) => theme.colors.danger};
   font-size: 12px;
@@ -11,7 +11,7 @@ const ErrorMessage = styled.Text`
   text-transform: uppercase;
 `;
 
-const IconContainerLeft = styled.TouchableOpacity`
+const IconContainerLeft = styled(Touchable)`
   align-content: center;
   justify-content: center;
   position: absolute;
@@ -19,7 +19,7 @@ const IconContainerLeft = styled.TouchableOpacity`
   height: ${({theme}) => theme.formHeight};
   left: 8px;
 `;
-const IconContainerRight = styled.TouchableOpacity`
+const IconContainerRight = styled(Touchable)`
   align-content: center;
   justify-content: center;
   position: absolute;

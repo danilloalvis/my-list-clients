@@ -2,9 +2,9 @@ const light = {
   formHeight: 40,
   radius: 15,
   borderWidth: 1,
-  textSmall: 14,
-  textNormal: 18,
-  textLarge: 22,
+  textSmall: 12,
+  textNormal: 16,
+  textLarge: 20,
 
   colors: {
     primary: '#00c3ab',

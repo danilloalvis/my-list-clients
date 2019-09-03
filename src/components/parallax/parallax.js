@@ -8,10 +8,13 @@ import {
   Keyboard,
 } from 'react-native';
 import Touchable from '../touchable/touchable';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/Feather';
+
+import {withTheme} from 'styled-components';
+
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 73;
 
-export default Parallax = ({headerHeight, children, headerComponent}) => {
+const Parallax = ({headerHeight, children, headerComponent, theme}) => {
   const scrollViewEl = useRef(null);
 
   const [headerMaxHeight, setHeaderMaxHeight] = useState(300);
@@ -141,7 +144,7 @@ export default Parallax = ({headerHeight, children, headerComponent}) => {
         style={{
           ...styles.floatButton,
           bottom: -headerHeight,
-          backgroundColor: 'blue',
+          backgroundColor: theme.colors.primary,
           transform: [{translateY: floatButton}],
         }}>
         <Touchable style={styles.containerIcon} onPress={_scrollToTop}>
@@ -194,3 +197,5 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
 });
+
+export default withTheme(Parallax);

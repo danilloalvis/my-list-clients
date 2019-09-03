@@ -1,10 +1,10 @@
 const dark = {
   formHeight: 40,
   radius: 15,
-  borderWidth: 0,
-  textSmall: 14,
-  textNormal: 18,
-  textLarge: 22,
+  borderWidth: 1,
+  textSmall: 12,
+  textNormal: 16,
+  textLarge: 20,
 
   colors: {
     primary: '#00c3ab',

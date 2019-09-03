@@ -11,24 +11,21 @@ const ErrorMessage = styled.Text`
   text-transform: uppercase;
 `;
 
-const IconContainer = styled.TouchableOpacity`
+const IconContainerLeft = styled.TouchableOpacity`
   align-content: center;
   justify-content: center;
   position: absolute;
   width: 30px;
-
-  ${({iconLeft, theme}) => {
-    if (iconLeft) {
-      return css`
-        height: ${theme.formHeight};
-        left: 8px;
-      `;
-    }
-    return css`
-      height: ${theme.formHeight};
-      right: 0;
-    `;
-  }}
+  height: ${({theme}) => theme.formHeight};
+  left: 8px;
+`;
+const IconContainerRight = styled.TouchableOpacity`
+  align-content: center;
+  justify-content: center;
+  position: absolute;
+  width: 30px;
+  height: ${({theme}) => theme.formHeight};
+  right: 0;
 `;
 
 const Icon = styled(MaterialCommunityIcons)`
@@ -46,9 +43,9 @@ const InputContainer = styled.View`
 const InputForm = styled.TextInput.attrs(({theme}) => ({
   placeholderTextColor: theme.colors.placeholderColor,
 }))`
-  ${({theme, iconLeft, iconRight}) => {
+  ${({theme, iconLeft, iconRight, loading}) => {
     return css`
-      padding-right: ${iconRight ? '40px' : '10px'};
+      padding-right: ${iconRight ? (loading ? '70px' : '40px') : '10px'};
       padding-left: ${iconLeft ? '40px' : '10px'};
       background-color: #ffffff;
       border-color: ${theme.colors.borderColor};
@@ -62,9 +59,9 @@ const InputForm = styled.TextInput.attrs(({theme}) => ({
 const MaskForm = styled(TextInputMask).attrs(({theme}) => ({
   placeholderTextColor: theme.colors.placeholderColor,
 }))`
-  ${({theme, iconLeft, iconRight}) => {
+  ${({theme, iconLeft, iconRight, loading}) => {
     return css`
-      padding-right: ${iconRight ? '40px' : '10px'};
+      padding-right: ${iconRight ? (loading ? '70px' : '40px') : '10px'};
       padding-left: ${iconLeft ? '40px' : '10px'};
       background-color: ${theme.colors.inputBackground};
       border-color: ${theme.colors.borderColor};
@@ -88,12 +85,13 @@ const Loading = styled.ActivityIndicator`
   color: ${({theme}) => theme.colors.primary};
   align-self: center;
   position: absolute;
-  right: 10px;
+  right: 40px;
 `;
 
 export {
   ErrorMessage,
-  IconContainer,
+  IconContainerLeft,
+  IconContainerRight,
   Icon,
   InputContainer,
   InputForm,

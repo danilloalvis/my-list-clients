@@ -15,7 +15,13 @@ const Main = () => {
   return (
     <Fragment>
       <StatusBar barStyle="dark-content" />
-      <Input value={text} onChangeText={setText} iconLeft iconName="account" />
+      <Input
+        value={text}
+        onChangeText={setText}
+        iconLeft="account"
+        iconRight="account"
+        loading
+      />
     </Fragment>
   );
 };

@@ -4,7 +4,8 @@ import {View, ViewPropTypes} from 'react-native';
 import {
   ErrorMessage,
   Icon,
-  IconContainer,
+  IconContainerLeft,
+  IconContainerRight,
   InputContainer,
   InputForm,
   Label,
@@ -21,7 +22,6 @@ const Input = ({
   errorMessageStyle,
   labelText,
   mask,
-  iconName,
   errorMessage,
   inputProps,
   value,
@@ -30,7 +30,8 @@ const Input = ({
   disabled,
   iconLeft,
   iconRight,
-  iconPress,
+  iconLeftPress,
+  iconRightress,
   onChangeText,
   loading,
 }) => {
@@ -50,7 +51,8 @@ const Input = ({
             autoCapitalize="none"
             type={'custom'}
             iconLeft={iconLeft}
-            iconRight={iconRight || loading}
+            iconRight={iconRight}
+            loading={loading}
             options={{
               mask,
             }}
@@ -66,7 +68,8 @@ const Input = ({
           <InputForm
             autoCapitalize="none"
             iconLeft={iconLeft}
-            iconRight={iconRight || loading}
+            iconRight={iconRight}
+            loading={loading}
             style={inputStyle}
             placeholder={placeholder}
             {...inputProps}
@@ -76,10 +79,17 @@ const Input = ({
             onChangeText={onChangeText}
           />
         )}
-        <IconContainer iconLeft={iconLeft} onPress={iconPress}>
-          {iconName && <Icon name={iconName} style={iconStyle} />}
-          {loading && <Loading />}
-        </IconContainer>
+        {iconLeft && (
+          <IconContainerLeft iconLeft={iconLeft} onPress={iconLeftPress}>
+            <Icon name={iconLeft} style={iconStyle} />
+          </IconContainerLeft>
+        )}
+        {iconRight && (
+          <IconContainerRight iconLeft={iconRight} onPress={iconRightress}>
+            <Icon name={iconRight} style={iconStyle} />
+            {loading && <Loading />}
+          </IconContainerRight>
+        )}
       </InputContainer>
     </View>
   );
@@ -89,19 +99,19 @@ Input.propTypes = {
   labelStyle: PropTypes.object,
   iconStyle: PropTypes.object,
   style: ViewPropTypes.style,
-  iconLeft: PropTypes.bool,
-  iconRight: PropTypes.bool,
+  iconLeft: PropTypes.string,
+  iconRight: PropTypes.string,
   errorMessageStyle: PropTypes.object,
   labelText: PropTypes.string,
   mask: PropTypes.string,
-  iconName: PropTypes.string,
   errorMessage: PropTypes.string,
   inputProps: PropTypes.object,
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   hidden: PropTypes.bool,
   disabled: PropTypes.bool,
-  iconPress: PropTypes.func,
+  iconLeftPress: PropTypes.func,
+  iconRightPress: PropTypes.func,
   onChangeText: PropTypes.func.isRequired,
   loading: PropTypes.bool,
 };

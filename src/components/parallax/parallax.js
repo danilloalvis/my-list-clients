@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   Animated,
   Platform,
@@ -6,10 +6,13 @@ import {
   View,
   RefreshControl,
 } from 'react-native';
-
+import Touchable from '../touchable/touchable';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 73;
 
 export default Parallax = ({headerHeight, children, headerComponent}) => {
+  const scrollViewEl = useRef(null);
+
   const [headerMaxHeight, setHeaderMaxHeight] = useState(300);
   const [headerScrollDistance, setHeaderScrollDistance] = useState(0);
   const [refreshing, setRefreshing] = useState(false);
@@ -51,9 +54,16 @@ export default Parallax = ({headerHeight, children, headerComponent}) => {
     outputRange: [1, 0, 0],
     extrapolate: 'clamp',
   });
+
   const titleTranslate = animatedScrollY.interpolate({
     inputRange: [0, headerScrollDistance / 2, headerScrollDistance],
     outputRange: [0, 0, -8],
+    extrapolate: 'clamp',
+  });
+
+  const floatButton = animatedScrollY.interpolate({
+    inputRange: [0, headerScrollDistance],
+    outputRange: [0, -headerHeight - 50],
     extrapolate: 'clamp',
   });
 
@@ -75,9 +85,17 @@ export default Parallax = ({headerHeight, children, headerComponent}) => {
     );
   };
 
+  const _scrollToTop = () => {
+    scrollViewEl.current.getNode().scrollTo({
+      y: 0,
+      animated: true,
+    });
+  };
+
   return (
     <View style={styles.fill}>
       <Animated.ScrollView
+        ref={scrollViewEl}
         style={styles.fill}
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={1}
@@ -123,6 +141,17 @@ export default Parallax = ({headerHeight, children, headerComponent}) => {
           {_headerComponent()}
         </Animated.View>
       </Animated.View>
+      <Animated.View
+        style={{
+          ...styles.floatButton,
+          bottom: -headerHeight,
+          backgroundColor: 'blue',
+          transform: [{translateY: floatButton}],
+        }}>
+        <Touchable style={styles.containerIcon} onPress={_scrollToTop}>
+          <Icon style={styles.icon} name="arrow-up" />
+        </Touchable>
+      </Animated.View>
     </View>
   );
 };
@@ -148,5 +177,24 @@ const styles = StyleSheet.create({
     right: 0,
     width: null,
     resizeMode: 'cover',
+  },
+  floatButton: {
+    borderRadius: 25,
+    position: 'absolute',
+    width: 50,
+    height: 50,
+    right: 20,
+    overflow: 'hidden',
+  },
+  containerIcon: {
+    width: '100%',
+    height: '100%',
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  icon: {
+    fontSize: 30,
+    color: '#fff',
   },
 });

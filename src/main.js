@@ -6,42 +6,24 @@
  * @flow
  */
 
-import React, {Fragment, useState, useEffect} from 'react';
+import React, {Fragment} from 'react';
 import {StatusBar, View} from 'react-native';
-import {Touchable, Gradient, Input, Avatar, DatePicker} from './components';
+import {
+  Touchable,
+  Gradient,
+  Input,
+  Avatar,
+  DatePicker,
+  Button,
+} from './components';
 import {SafeAreaView} from 'react-navigation';
-import {ClientAPI} from './api';
 const Main = () => {
-  const [text, setText] = useState('');
-  const [date, setDate] = useState('');
-
   return (
     <Fragment>
       <SafeAreaView style={{flex: 1}}>
         <StatusBar barStyle="dark-content" />
         <View style={{flex: 1, padding: 20}}>
-          <Input
-            labelText="Pesquisar"
-            value={text}
-            onChangeText={setText}
-            iconLeft="account"
-            iconRight="filter"
-            loading
-          />
-
-          <DatePicker
-            value={date}
-            onDateChange={val => setDate(val)}
-            labelText="Data"
-          />
-          <Input
-            labelText="Pesquisar"
-            value={text}
-            onChangeText={setText}
-            iconLeft="account"
-            iconRight="filter"
-            loading
-          />
+          <Button title="Teste" />
         </View>
       </SafeAreaView>
     </Fragment>

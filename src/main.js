@@ -6,11 +6,13 @@
  * @flow
  */
 
-import React, {Fragment} from 'react';
-import {StatusBar, View, Text} from 'react-native';
-import {Parallax, Button} from './components';
+import React, {Fragment, useState} from 'react';
+import {StatusBar, View} from 'react-native';
+import {Parallax, Button, Input} from './components';
 import {SafeAreaView} from 'react-navigation';
+import ItemClient from './components/item-client/item-client';
 const Main = () => {
+  const [search, setSearch] = useState('');
   const _header = () => {
     return (
       <View
@@ -21,7 +23,12 @@ const Main = () => {
           justifyContent: 'center',
           padding: 20,
         }}>
-        <Button title="Teste" />
+        <Input
+          iconLeft="magnify"
+          iconRight="filter-variant"
+          value={search}
+          onChangeText={setSearch}
+        />
       </View>
     );
   };
@@ -31,70 +38,78 @@ const Main = () => {
       <SafeAreaView style={{flex: 1}}>
         <StatusBar barStyle="dark-content" />
         <Parallax headerHeight={120} headerComponent={_header}>
-          <View key="body" style={{width: '100%', height: 1200}}>
-            <View
-              style={{
-                width: 100,
-                height: 100,
-                margin: 20,
-                backgroundColor: 'red',
-              }}
+          <View key="body" style={{width: '100%'}}>
+            <ItemClient
+              cpf="000.000.000-00"
+              name="Carl Jhonson"
+              dob="01/04/1994"
+              index={0}
             />
-            <View
-              style={{
-                width: 100,
-                height: 100,
-                margin: 20,
-                backgroundColor: 'black',
-              }}
+            <ItemClient
+              cpf="000.000.000-00"
+              name="Carl Jhonson"
+              dob="01/04/1994"
+              index={1}
             />
-            <View
-              style={{
-                width: 100,
-                height: 100,
-                margin: 20,
-                backgroundColor: 'red',
-              }}
+            <ItemClient
+              cpf="000.000.000-00"
+              name="Carl Jhonson"
+              dob="01/04/1994"
+              index={0}
             />
-            <View
-              style={{
-                width: 100,
-                height: 100,
-                margin: 20,
-                backgroundColor: 'black',
-              }}
+            <ItemClient
+              cpf="000.000.000-00"
+              name="Carl Jhonson"
+              dob="01/04/1994"
+              index={1}
             />
-            <View
-              style={{
-                width: 100,
-                height: 100,
-                margin: 20,
-                backgroundColor: 'red',
-              }}
+            <ItemClient
+              cpf="000.000.000-00"
+              name="Carl Jhonson"
+              dob="01/04/1994"
+              index={0}
             />
-            <View
-              style={{
-                width: 100,
-                height: 100,
-                margin: 20,
-                backgroundColor: 'black',
-              }}
+            <ItemClient
+              cpf="000.000.000-00"
+              name="Carl Jhonson"
+              dob="01/04/1994"
+              index={1}
             />
-            <View
-              style={{
-                width: 100,
-                height: 100,
-                margin: 20,
-                backgroundColor: 'red',
-              }}
+            <ItemClient
+              cpf="000.000.000-00"
+              name="Carl Jhonson"
+              dob="01/04/1994"
+              index={0}
             />
-            <View
-              style={{
-                width: 100,
-                height: 100,
-                margin: 20,
-                backgroundColor: 'black',
-              }}
+            <ItemClient
+              cpf="000.000.000-00"
+              name="Carl Jhonson"
+              dob="01/04/1994"
+              index={1}
+            />
+            <ItemClient
+              cpf="000.000.000-00"
+              name="Carl Jhonson"
+              dob="01/04/1994"
+              index={0}
+            />
+            <ItemClient
+              cpf="000.000.000-00"
+              name="Carl Jhonson"
+              dob="01/04/1994"
+              index={1}
+            />
+            <ItemClient
+              cpf="000.000.000-00"
+              name="Carl Jhonson"
+              dob="01/04/1994"
+              index={0}
+            />
+            <ItemClient
+              cpf="000.000.000-00"
+              name="Carl Jhonson"
+              dob="01/04/1994"
+              index={1}
             />
           </View>
         </Parallax>

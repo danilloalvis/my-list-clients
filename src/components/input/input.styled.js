@@ -29,7 +29,7 @@ const IconContainerRight = styled(Touchable)`
   position: absolute;
   width: 30px;
   height: ${({theme}) => theme.formHeight};
-  right: 0;
+  right: 8;
 `;
 
 const Icon = styled(MaterialCommunityIcons)`

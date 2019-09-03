@@ -5,6 +5,7 @@ import {
   StyleSheet,
   View,
   RefreshControl,
+  Keyboard,
 } from 'react-native';
 import Touchable from '../touchable/touchable';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -51,7 +52,7 @@ export default Parallax = ({headerHeight, children, headerComponent}) => {
 
   const headerScale = animatedScrollY.interpolate({
     inputRange: [0, headerScrollDistance / 2, headerScrollDistance],
-    outputRange: [1, 0, 0],
+    outputRange: [1, 0.2, 0.2],
     extrapolate: 'clamp',
   });
 
@@ -66,7 +67,6 @@ export default Parallax = ({headerHeight, children, headerComponent}) => {
       <Animated.View
         style={{
           flex: 1,
-          transform: [{scale: headerScale}],
         }}>
         {headerComponent()}
       </Animated.View>
@@ -93,12 +93,14 @@ export default Parallax = ({headerHeight, children, headerComponent}) => {
         style={styles.fill}
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={1}
+        onScrollBeginDrag={() => Keyboard.dismiss()}
         onScroll={Animated.event(
           [{nativeEvent: {contentOffset: {y: scrollY}}}],
           {
             useNativeDriver: true,
           },
         )}
+        ben
         refreshControl={
           <RefreshControl
             refreshing={refreshing}

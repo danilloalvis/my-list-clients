@@ -9,6 +9,7 @@ import {
   InputContainer,
   InputForm,
   Label,
+  Container,
   MaskForm,
   Loading,
 } from './input.styled';
@@ -40,12 +41,12 @@ const Input = ({
   }
 
   return (
-    <View style={style}>
+    <Container style={style}>
       {errorMessage && (
         <ErrorMessage style={errorMessageStyle}>{errorMessage}</ErrorMessage>
       )}
+      {labelText && <Label style={labelStyle}>{labelText} </Label>}
       <InputContainer>
-        {labelText && <Label style={labelStyle}>{labelText} </Label>}
         {mask ? (
           <MaskForm
             autoCapitalize="none"
@@ -91,7 +92,7 @@ const Input = ({
           </IconContainerRight>
         )}
       </InputContainer>
-    </View>
+    </Container>
   );
 };
 Input.propTypes = {

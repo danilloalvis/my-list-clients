@@ -4,15 +4,21 @@ import DatePicker from 'react-native-datepicker';
 
 const Container = styled.View`
   width: 100%;
-  margin-bottom: 20px;
-  position: relative;
-  margin-top: 20px;
+  margin-top: 100px;
 `;
 
 const Label = styled.Text`
   color: ${({theme}) => theme.colors.labelColor};
-  font-weight: 600;
-  margin-bottom: 5px;
+  font-size: ${({theme}) => theme.textNormal};
+  font-weight: 400;
+  margin-bottom: 5;
+`;
+
+const InputContainer = styled.View`
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  flex: 1;
 `;
 
 const InputDate = styled(DatePicker).attrs(({theme}) => ({
@@ -38,9 +44,13 @@ const InputDate = styled(DatePicker).attrs(({theme}) => ({
 `;
 
 const IconContainer = styled.TouchableOpacity`
+  align-content: center;
+  justify-content: center;
   position: absolute;
-  right: 18;
-  top: 38;
+  width: 30px;
+  height: ${({theme}) => theme.formHeight};
+  right: 0;
+  top: 50%;
 `;
 
 const Icon = styled(FontAwesome)`
@@ -56,4 +66,12 @@ const ErrorMessage = styled.Text`
   margin-top: 5px;
 `;
 
-export {Container, Label, InputDate, IconContainer, Icon, ErrorMessage};
+export {
+  Container,
+  Label,
+  InputDate,
+  IconContainer,
+  Icon,
+  ErrorMessage,
+  InputContainer,
+};

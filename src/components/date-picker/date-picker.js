@@ -9,6 +9,7 @@ import {
   IconContainer,
   Icon,
   ErrorMessage,
+  InputContainer,
 } from './date-picker.styled';
 
 const DatePicker = ({
@@ -25,7 +26,6 @@ const DatePicker = ({
   value,
   placeholder,
   hidden,
-  iconName,
   disabled,
   onDateChange,
 }) => {
@@ -42,40 +42,39 @@ const DatePicker = ({
   }
 
   return (
-    <Container>
-      <Label style={labelStyle}>{labelText} </Label>
-      <InputDate
-        disabled={disabled}
-        date={value}
-        style={style}
-        mode="date"
-        androidMode="spinner"
-        placeholder={placeholder || 'Selecione uma data'}
-        format={format || 'DD/MM/YYYY'}
-        minDate={minDate || minDate}
-        maxDate={maxDate || maxDate}
-        confirmBtnText={confirmBtnText || 'Confirmar'}
-        cancelBtnText={cancelBtnText || 'Cancelar'}
-        showIcon={false}
-        onDateChange={onDateChange}
-        locale="pt"
-      />
+    <Container style={style}>
+      {errorMessage && (
+        <ErrorMessage style={errorMessageStyle}>{errorMessage}</ErrorMessage>
+      )}
+      {labelText && <Label style={labelStyle}>{labelText} </Label>}
+      <InputContainer>
+        <InputDate
+          disabled={disabled}
+          date={value}
+          style={style}
+          mode="date"
+          androidMode="spinner"
+          placeholder={placeholder || 'Selecione uma data'}
+          format={format || 'DD/MM/YYYY'}
+          minDate={minDate || minDate}
+          maxDate={maxDate || maxDate}
+          confirmBtnText={confirmBtnText || 'Confirmar'}
+          cancelBtnText={cancelBtnText || 'Cancelar'}
+          showIcon={false}
+          onDateChange={onDateChange}
+          locale="pt"
+        />
 
-      <IconContainer>
-        <Icon name="caret-down" />
-      </IconContainer>
-      {errorMessage ? (
-        <ErrorMessage style={errorMessageStyle}>
-          <Icon name="exclamation-circle" /> {errorMessage}
-        </ErrorMessage>
-      ) : null}
+        <IconContainer>
+          <Icon name="caret-down" />
+        </IconContainer>
+      </InputContainer>
     </Container>
   );
 };
 
 DatePicker.propTypes = {
   labelStyle: PropTypes.object,
-  iconName: PropTypes.string,
   labelText: PropTypes.string,
   style: ViewPropTypes.style,
   format: PropTypes.string,

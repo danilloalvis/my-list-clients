@@ -2,6 +2,10 @@ import {TextInputMask} from 'react-native-masked-text';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styled, {css} from 'styled-components/native';
 import Touchable from '../touchable/touchable';
+
+const Container = styled.View`
+  width: 100%;
+`;
 const ErrorMessage = styled.Text`
   color: ${({theme}) => theme.colors.danger};
   font-size: 12px;
@@ -89,6 +93,7 @@ const Loading = styled.ActivityIndicator`
 `;
 
 export {
+  Container,
   ErrorMessage,
   IconContainerLeft,
   IconContainerRight,

@@ -5,5 +5,14 @@ import Input from './input/input';
 import DatePicker from './date-picker/date-picker';
 import Button from './button/button';
 import Parallax from './parallax/parallax';
-
-export {Touchable, Avatar, Gradient, Input, DatePicker, Button, Parallax};
+import ItemClient from './item-client/item-client';
+export {
+  Touchable,
+  Avatar,
+  Gradient,
+  Input,
+  DatePicker,
+  Button,
+  Parallax,
+  ItemClient,
+};

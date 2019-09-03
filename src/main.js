@@ -11,6 +11,7 @@ import {StatusBar, View} from 'react-native';
 import {Parallax, Button, Input} from './components';
 import {SafeAreaView} from 'react-navigation';
 import ItemClient from './components/item-client/item-client';
+import HomeScreen from './screens/home/home';
 const Main = () => {
   const [search, setSearch] = useState('');
   const _header = () => {
@@ -37,82 +38,8 @@ const Main = () => {
     <Fragment>
       <SafeAreaView style={{flex: 1}}>
         <StatusBar barStyle="dark-content" />
-        <Parallax headerHeight={120} headerComponent={_header}>
-          <View key="body" style={{width: '100%'}}>
-            <ItemClient
-              cpf="000.000.000-00"
-              name="Carl Jhonson"
-              dob="01/04/1994"
-              index={0}
-            />
-            <ItemClient
-              cpf="000.000.000-00"
-              name="Carl Jhonson"
-              dob="01/04/1994"
-              index={1}
-            />
-            <ItemClient
-              cpf="000.000.000-00"
-              name="Carl Jhonson"
-              dob="01/04/1994"
-              index={0}
-            />
-            <ItemClient
-              cpf="000.000.000-00"
-              name="Carl Jhonson"
-              dob="01/04/1994"
-              index={1}
-            />
-            <ItemClient
-              cpf="000.000.000-00"
-              name="Carl Jhonson"
-              dob="01/04/1994"
-              index={0}
-            />
-            <ItemClient
-              cpf="000.000.000-00"
-              name="Carl Jhonson"
-              dob="01/04/1994"
-              index={1}
-            />
-            <ItemClient
-              cpf="000.000.000-00"
-              name="Carl Jhonson"
-              dob="01/04/1994"
-              index={0}
-            />
-            <ItemClient
-              cpf="000.000.000-00"
-              name="Carl Jhonson"
-              dob="01/04/1994"
-              index={1}
-            />
-            <ItemClient
-              cpf="000.000.000-00"
-              name="Carl Jhonson"
-              dob="01/04/1994"
-              index={0}
-            />
-            <ItemClient
-              cpf="000.000.000-00"
-              name="Carl Jhonson"
-              dob="01/04/1994"
-              index={1}
-            />
-            <ItemClient
-              cpf="000.000.000-00"
-              name="Carl Jhonson"
-              dob="01/04/1994"
-              index={0}
-            />
-            <ItemClient
-              cpf="000.000.000-00"
-              name="Carl Jhonson"
-              dob="01/04/1994"
-              index={1}
-            />
-          </View>
-        </Parallax>
+
+        <HomeScreen />
       </SafeAreaView>
     </Fragment>
   );

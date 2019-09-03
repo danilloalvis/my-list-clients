@@ -2,10 +2,10 @@ import React, {ReactElement} from 'react';
 import {ViewPropTypes} from 'react-native';
 import {GradiendView} from './gradient.styled';
 import PropTypes from 'prop-types';
-
-const Gradient = ({colors, style, children}) => {
+import {withTheme} from 'styled-components';
+const Gradient = ({colors, style, children, theme}) => {
   if (!colors) {
-    colors = ['#3A607E', '#2D475C'];
+    colors = [theme.colors.primary, theme.colors.secondary];
   }
 
   return (
@@ -20,4 +20,4 @@ Gradient.propTypes = {
   style: ViewPropTypes.style,
 };
 
-export default Gradient;
+export default withTheme(Gradient);

@@ -1,7 +1,7 @@
 const dark = {
-  formHeight: 50,
-  radius: 40,
-  borderWidth: 2,
+  formHeight: 40,
+  radius: 15,
+  borderWidth: 0,
   textSmall: 14,
   textNormal: 18,
   textLarge: 22,

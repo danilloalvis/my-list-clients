@@ -14,13 +14,8 @@ const ScrollContainer = styled.ScrollView.attrs({
 })``;
 
 const Items = styled(DrawerNavigatorItems).attrs(({theme}) => ({
-  itemStyle: {
-    backgroundColor: theme.colors.background,
-  },
-  activeTintColor: theme.colors.primary,
-  activeBackgroundColor: 'white',
-  inactiveTintColor: theme.colors.primary,
-  inactiveBackgroundColor: 'white',
+  activeTintColor: '#fff',
+  inactiveTintColor: '#fff',
 }))``;
 
 export {Container, ScrollContainer, Items};

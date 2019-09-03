@@ -1,7 +1,7 @@
 const light = {
-  formHeight: 50,
+  formHeight: 40,
   radius: 15,
-  borderWidth: 2,
+  borderWidth: 0,
   textSmall: 14,
   textNormal: 18,
   textLarge: 22,
@@ -28,7 +28,7 @@ const light = {
     warning: '#FBC02D',
 
     borderColor: '#85BAE1',
-    inputBackground: 'transparent',
+    inputBackground: '#ffffff',
     inputTextColor: '#000',
     placeholderColor: 'rgba(255,255,255,0.5)',
     textColor: '#000',

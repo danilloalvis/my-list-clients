@@ -8,7 +8,7 @@
 
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {Parallax, Input, ItemClient} from '../../components';
+import {Parallax, Input, ItemClient, Gradient} from '../../components';
 import {FlatList} from 'react-native-gesture-handler';
 
 const clients = [
@@ -77,10 +77,11 @@ const HomeScreen = () => {
   const [search, setSearch] = useState('');
   const _header = () => {
     return (
-      <View
+      <Gradient
+        angle={45}
         style={{
           width: '100%',
-          height: 120,
+          height: 130,
           alignContent: 'center',
           justifyContent: 'center',
           padding: 20,
@@ -91,7 +92,7 @@ const HomeScreen = () => {
           value={search}
           onChangeText={setSearch}
         />
-      </View>
+      </Gradient>
     );
   };
 
@@ -106,7 +107,7 @@ const HomeScreen = () => {
     );
   };
   return (
-    <Parallax headerHeight={120} headerComponent={_header}>
+    <Parallax headerHeight={130} headerComponent={_header}>
       <View key="body" style={{width: '100%'}}>
         <FlatList
           data={clients}

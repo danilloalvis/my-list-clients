@@ -2,6 +2,8 @@ import React from 'react';
 import {DrawerContainer, MenuButton} from '../components';
 import Icon from 'react-native-vector-icons/Feather';
 import HomeScreen from '../screens/home/home';
+import RegisterScreen from '../screens/register/register';
+import SettingsScreen from '../screens/settings/settings';
 import {View} from 'react-native';
 
 import {createDrawerNavigator} from 'react-navigation-drawer';
@@ -9,13 +11,9 @@ import {createStackNavigator} from 'react-navigation-stack';
 
 const options = (props, label, icon) => ({
   drawerLabel: label,
-  drawerIcon: () => (
+  drawerIcon: ({tintColor}) => (
     <View>
-      <Icon
-        name={icon}
-        color={props.screenProps.theme.colors.primary}
-        size={24}
-      />
+      <Icon name={icon} color={tintColor} size={24} />
     </View>
   ),
 });
@@ -49,6 +47,30 @@ const DrawerNavigation = createDrawerNavigator(
         {
           navigationOptions: props => options(props, 'Clientes', 'home'),
           defaultNavigationOptions: props => defaultOptions(props, 'Clientes'),
+        },
+      ),
+    },
+    Register: {
+      screen: createStackNavigator(
+        {
+          screen: RegisterScreen,
+        },
+        {
+          navigationOptions: props => options(props, 'Cadastro', 'user-plus'),
+          defaultNavigationOptions: props => defaultOptions(props, 'Cadastro'),
+        },
+      ),
+    },
+    Settings: {
+      screen: createStackNavigator(
+        {
+          screen: SettingsScreen,
+        },
+        {
+          navigationOptions: props =>
+            options(props, 'Configurações', 'settings'),
+          defaultNavigationOptions: props =>
+            defaultOptions(props, 'Configurações'),
         },
       ),
     },

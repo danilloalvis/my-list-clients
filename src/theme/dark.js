@@ -18,6 +18,8 @@ const dark = {
         secondaryDark: '#c25e00',
         secondaryText: '#FFFFFF',
 
+        danger: '#f44336',
+
         background: '#263238',
         backgroundAccent: '#000a12',
         grey: '#EEEEF3',

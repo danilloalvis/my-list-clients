@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Animated, Platform, StyleSheet, View, RefreshControl, Keyboard } from 'react-native'
-import Touchable from '../touchable/touchable'
-import Icon from 'react-native-vector-icons/Feather'
-
+import {
+    Container,
+    ScrollViewContainer,
+    Header,
+    HeaderLarge,
+    FloatButton,
+    ContainerIcon,
+    Icon
+} from './parallax.styled'
 import { withTheme } from 'styled-components'
 
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 73
@@ -80,10 +86,9 @@ const Parallax = ({ headerHeight, children, headerComponent, theme, pullToRefres
     }
 
     return (
-        <View style={styles.fill}>
-            <Animated.ScrollView
+        <Container>
+            <ScrollViewContainer
                 ref={scrollViewEl}
-                style={styles.fill}
                 showsVerticalScrollIndicator={false}
                 scrollEventThrottle={1}
                 onScrollBeginDrag={() => Keyboard.dismiss()}
@@ -114,82 +119,29 @@ const Parallax = ({ headerHeight, children, headerComponent, theme, pullToRefres
                 }}
             >
                 {_bodyComponent()}
-            </Animated.ScrollView>
-            <Animated.View
-                style={[
-                    styles.header,
-                    { height: headerMaxHeight, transform: [{ translateY: headerTranslate }] }
-                ]}
-            >
-                <Animated.View
-                    style={[
-                        styles.headerLarge,
-                        {
-                            height: headerMaxHeight,
-                            transform: [{ translateY: headerContentTranslate }]
-                        }
-                    ]}
+            </ScrollViewContainer>
+            <Header style={{ height: headerMaxHeight, transform: [{ translateY: headerTranslate }] }}>
+                <HeaderLarge
+                    style={{
+                        height: headerMaxHeight,
+                        transform: [{ translateY: headerContentTranslate }]
+                    }}
                 >
                     {_headerComponent()}
-                </Animated.View>
-            </Animated.View>
-            <Animated.View
+                </HeaderLarge>
+            </Header>
+            <FloatButton
                 style={{
-                    ...styles.floatButton,
                     bottom: -headerHeight,
-                    backgroundColor: theme.colors.primary,
                     transform: [{ translateY: floatButton }]
                 }}
             >
-                <Touchable style={styles.containerIcon} onPress={_scrollToTop}>
-                    <Icon style={styles.icon} name='arrow-up' />
-                </Touchable>
-            </Animated.View>
-        </View>
+                <ContainerIcon onPress={_scrollToTop}>
+                    <Icon name='arrow-up' />
+                </ContainerIcon>
+            </FloatButton>
+        </Container>
     )
 }
-
-const styles = StyleSheet.create({
-    fill: {
-        flex: 1
-    },
-    content: {
-        flex: 1
-    },
-    header: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        overflow: 'hidden'
-    },
-    headerLarge: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        width: null,
-        resizeMode: 'cover'
-    },
-    floatButton: {
-        borderRadius: 25,
-        position: 'absolute',
-        width: 50,
-        height: 50,
-        right: 40,
-        overflow: 'hidden'
-    },
-    containerIcon: {
-        width: '100%',
-        height: '100%',
-        alignContent: 'center',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    icon: {
-        fontSize: 30,
-        color: '#fff'
-    }
-})
 
 export default withTheme(Parallax)

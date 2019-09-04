@@ -83,6 +83,7 @@ export default RegisterScreen = withFormik({
             }
 
             const client = props.navigation.getParam('client', null)
+
             if (client) {
                 await ClientAPI.update(client.id, body)
                 Alert.alert('Sucesso!', 'Cliente Atualizado com sucesso')

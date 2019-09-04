@@ -11,26 +11,37 @@ import { Parallax, ItemClient, Loading } from '../../components'
 import { FlatList } from 'react-native-gesture-handler'
 import { Container, Search, SearchContainer } from './home.styled'
 import { ClientAPI } from '../../api'
-
-const HomeScreen = ({ navigation }) => {
+import { withNavigationFocus } from 'react-navigation'
+const HomeScreen = ({ navigation, isFocused }) => {
     const [loading, setLoading] = useState(false)
     const [search, setSearch] = useState('')
     const [totalClients, setTotalClients] = useState([])
     const [clients, setClients] = useState([])
 
-    useEffect(async () => {
+    useEffect(() => {
+        if (isFocused) {
+            _getClients()
+            console.log('focado')
+        }
+    }, [isFocused])
+
+    useEffect(() => {
+        _filterClienta()
+    }, [search])
+
+    const _getClients = async () => {
         setLoading(true)
         try {
             const result = await ClientAPI.list()
             setTotalClients(result)
-            setClients(result)
+            _filterClienta()
             setLoading(false)
         } catch (err) {
             setLoading(false)
         }
-    }, [])
+    }
 
-    useEffect(() => {
+    const _filterClienta = () => {
         if (search) {
             const clients = totalClients.filter(
                 item => item.name.toLocaleUpperCase().includes(search) || item.cpf.includes(search)
@@ -39,7 +50,7 @@ const HomeScreen = ({ navigation }) => {
         } else {
             setClients(totalClients)
         }
-    }, [search])
+    }
 
     const _header = () => {
         return (
@@ -62,7 +73,7 @@ const HomeScreen = ({ navigation }) => {
     }
     return (
         <Container>
-            <Parallax headerHeight={130} headerComponent={_header}>
+            <Parallax pullToRefresh={_getClients} headerHeight={130} headerComponent={_header}>
                 <Container>
                     <FlatList
                         data={clients}
@@ -77,4 +88,4 @@ const HomeScreen = ({ navigation }) => {
     )
 }
 
-export default HomeScreen
+export default withNavigationFocus(HomeScreen)

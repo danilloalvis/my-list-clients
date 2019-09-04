@@ -7,7 +7,7 @@ import { withTheme } from 'styled-components'
 
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 73
 
-const Parallax = ({ headerHeight, children, headerComponent, theme }) => {
+const Parallax = ({ headerHeight, children, headerComponent, theme, pullToRefresh }) => {
     const scrollViewEl = useRef(null)
 
     const [headerMaxHeight, setHeaderMaxHeight] = useState(300)
@@ -94,9 +94,12 @@ const Parallax = ({ headerHeight, children, headerComponent, theme }) => {
                 refreshControl={
                     <RefreshControl
                         refreshing={refreshing}
-                        onRefresh={() => {
+                        onRefresh={async () => {
                             setRefreshing(true)
-                            setTimeout(() => setRefreshing(false), 1000)
+                            if (pullToRefresh) {
+                                await pullToRefresh()
+                            }
+                            setRefreshing(false)
                         }}
                         // Deslocamento do Android para RefreshControl
                         progressViewOffset={headerMaxHeight + 40}

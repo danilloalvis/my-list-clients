@@ -6,21 +6,20 @@
  * @flow
  */
 
-import React, { useState } from 'react'
-import { View } from 'react-native'
+import React, { useState, useEffect } from 'react'
 import { Parallax, Input, ItemClient } from '../../components'
 import { FlatList } from 'react-native-gesture-handler'
 import { Container, Search, SearchContainer } from './home.styled'
-const clients = [
+const _clients = [
     {
         name: 'Carl Jhonson',
         cpf: '12345678901',
         birthdate: '1970-01-01'
     },
     {
-        name: 'Carl Jhonson',
-        cpf: '12345678901',
-        birthdate: '1970-01-01'
+        name: 'Danilo Torquato',
+        cpf: '99999999999',
+        birthdate: '1994-04-01'
     },
     {
         name: 'Carl Jhonson',
@@ -75,6 +74,8 @@ const clients = [
 ]
 const HomeScreen = ({ navigation }) => {
     const [search, setSearch] = useState('')
+    const [totalClients, setTotalClients] = useState(_clients)
+    const [clients, setClients] = useState([])
     const _header = () => {
         return (
             <SearchContainer style={{ height: 130 }}>
@@ -83,6 +84,21 @@ const HomeScreen = ({ navigation }) => {
         )
     }
 
+    useEffect(() => {
+        setClients(totalClients)
+    }, [totalClients])
+
+    useEffect(() => {
+        if (search) {
+            const clients = totalClients.filter(
+                item => item.name.toLocaleUpperCase().includes(search) || item.cpf.includes(search)
+            )
+            setClients(clients)
+        } else {
+            setClients(totalClients)
+        }
+    }, [search])
+
     const _renderItems = ({ item, index }) => {
         return (
             <ItemClient
@@ -90,7 +106,7 @@ const HomeScreen = ({ navigation }) => {
                 name={item.name}
                 dob={item.birthdate}
                 index={index}
-                onPress={() => navigation.navigate('UpdateClient', { client: item })}
+                onPress={() => navigation.navigate('UpdateScreen', { client: item })}
             />
         )
     }

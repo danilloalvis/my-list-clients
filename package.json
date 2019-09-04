@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "cpf": "^2.0.1",
     "formik": "^1.5.8",
     "moment": "^2.24.0",
     "react": "16.8.6",

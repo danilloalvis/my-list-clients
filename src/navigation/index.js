@@ -10,8 +10,8 @@ const AppNavigation = ({ initialRouteName, theme }) => {
 
     const AppStack = createStackNavigator(
         {
-            Home: DrawerNavigation,
-            UpdateClient: UpdateScreen
+            Drawer: DrawerNavigation,
+            UpdateScreen: UpdateScreen
         },
         {
             defaultNavigationOptions: {

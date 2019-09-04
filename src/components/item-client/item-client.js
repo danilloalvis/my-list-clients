@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Container, ContainerInfo, TextInfo, Bold, ContainerIcon, Icon } from './item-client.styled'
 import Avatar from '../avatar/avatar'
-
+import CPF from 'cpf'
 export default class ItemClient extends PureComponent {
     render() {
         const { name, dob, cpf, index, onPress } = this.props
@@ -13,7 +13,7 @@ export default class ItemClient extends PureComponent {
                         <Bold>{name}</Bold>
                     </TextInfo>
                     <TextInfo>{dob}</TextInfo>
-                    <TextInfo>{cpf}</TextInfo>
+                    <TextInfo>{CPF.format(cpf)}</TextInfo>
                 </ContainerInfo>
                 <ContainerIcon>
                     <Icon name='delete' />

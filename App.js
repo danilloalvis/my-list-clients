@@ -1,14 +1,13 @@
-import React from 'react';
-import Main from './src/main';
-import {ThemeProvider} from 'styled-components';
-import light from './src/theme/light';
-
+import React from 'react'
+import { Provider } from 'react-redux'
+import { Store } from './src/redux/store'
+import Main from './src/main'
 const App = () => {
-  return (
-    <ThemeProvider theme={light}>
-      <Main />
-    </ThemeProvider>
-  );
-};
+    return (
+        <Provider store={Store}>
+            <Main />
+        </Provider>
+    )
+}
 
-export default App;
+export default App

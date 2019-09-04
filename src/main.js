@@ -9,17 +9,27 @@
 import React, { Fragment } from 'react'
 import { StatusBar, View } from 'react-native'
 import AppNavigation from './navigation'
-import { withTheme } from 'styled-components'
+import { connect } from 'react-redux'
+import { ThemeProvider } from 'styled-components'
 
 const Main = ({ theme }) => {
     return (
         <Fragment>
-            <View style={{ flex: 1 }}>
-                <StatusBar backgroundColor={theme.colors.primary} barStyle='light-content' />
-                <AppNavigation />
-            </View>
+            <ThemeProvider theme={theme}>
+                <View style={{ flex: 1 }}>
+                    <StatusBar backgroundColor={theme.colors.primary} barStyle='light-content' />
+                    <AppNavigation />
+                </View>
+            </ThemeProvider>
         </Fragment>
     )
 }
 
-export default withTheme(Main)
+const mapStateToProps = store => ({
+    theme: store.theme
+})
+
+export default connect(
+    mapStateToProps,
+    null
+)(Main)

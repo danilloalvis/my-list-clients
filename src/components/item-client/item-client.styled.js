@@ -7,7 +7,8 @@ const Container = styled(Touchable)`
     flex-direction: row;
     align-content: center;
     align-items: center;
-    background-color: ${({ theme, index }) => (index % 2 == 0 ? theme.colors.grey : 'transparent')};
+    background-color: ${({ theme, index }) =>
+        index % 2 == 0 ? theme.colors.backgroundAccent : 'transparent'};
 `
 
 const ContainerInfo = styled.View`
@@ -17,6 +18,7 @@ const ContainerInfo = styled.View`
 
 const TextInfo = styled.Text`
     font-size: 16px;
+    color: ${({ theme }) => theme.colors.textColor};
 `
 
 const Bold = styled.Text`

@@ -1,40 +1,36 @@
 const dark = {
-  formHeight: 40,
-  radius: 15,
-  borderWidth: 1,
-  textSmall: 12,
-  textNormal: 16,
-  textLarge: 20,
+    type: 'dark',
+    formHeight: 40,
+    radius: 15,
+    borderWidth: 1,
+    textSmall: 12,
+    textNormal: 16,
+    textLarge: 20,
 
-  colors: {
-    primary: '#00c3ab',
-    primaryLight: '#5ef7dd',
-    primaryDark: '#00927c',
-    primaryText: '#ffffff',
+    colors: {
+        primary: '#f4511e',
+        primaryLight: '#ff844c',
+        primaryDark: '#00927c',
+        primaryText: '#b91400',
 
-    secondary: '#439ee0',
-    secondaryLight: '#7ecfff',
-    secondaryDark: '#0070ae',
-    secondaryText: '#FFFFFF',
+        secondary: '#fb8c00',
+        secondaryLight: '#ffbd45',
+        secondaryDark: '#c25e00',
+        secondaryText: '#FFFFFF',
 
-    background: '#FDFDFD',
-    backgroundGradient: ['#3a607e', '#2d475c'],
-    grey: '#EEEEF3',
-    greyDark: '#bdbdbd',
+        background: '#263238',
+        backgroundAccent: '#000a12',
+        grey: '#EEEEF3',
+        greyDark: '#bdbdbd',
 
-    success: '#66BB6A',
-    info: '#90CAF9',
-    danger: '#ff8278',
-    warning: '#FBC02D',
+        borderColor: '#000a12',
+        inputBackground: '#263238',
+        inputTextColor: '#ffffff',
+        placeholderColor: 'rgba(255,255,255,0.5)',
+        textColor: '#ffffff',
+        labelColor: '#ffffff'
+    },
+    data: null
+}
 
-    borderColor: '#85BAE1',
-    inputBackground: 'transparent',
-    inputTextColor: '#ffffff',
-    placeholderColor: 'rgba(255,255,255,0.5)',
-    textColor: '#ffffff',
-    labelColor: '#ffffff',
-  },
-  data: null,
-};
-
-export default dark;
+export default dark

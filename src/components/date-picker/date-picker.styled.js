@@ -40,8 +40,8 @@ const InputDate = styled(DatePicker).attrs(({ theme }) => ({
             alignItems: 'flex-start',
             justifyContent: 'center'
         },
-        dateText: { fontSize: 16 },
-        placeholderText: { fontSize: 16 }
+        dateText: { fontSize: 16, color: theme.colors.textColor },
+        placeholderText: { fontSize: 16, color: theme.colors.placeholderColor }
     }
 }))`
     width: 100%;

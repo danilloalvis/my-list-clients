@@ -12,7 +12,7 @@ const SettingsScreen = ({ changeTheme, theme }) => {
 
     return (
         <Container>
-            <Button onPress={() => onPress('light')} title='Trocar Tema' />
+            <Button onPress={() => onPress(theme.type === 'light' ? 'dark' : 'light')} title='Trocar Tema' />
         </Container>
     )
 }

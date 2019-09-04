@@ -6,7 +6,7 @@ import UpdateScreen from '../screens/register/register'
 import { createStackNavigator } from 'react-navigation-stack'
 
 const AppNavigation = ({ initialRouteName, theme }) => {
-    const { background, primary } = theme.colors
+    const { background, primary, textColor } = theme.colors
 
     const AppStack = createStackNavigator(
         {

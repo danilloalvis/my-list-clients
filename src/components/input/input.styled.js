@@ -54,6 +54,7 @@ const InputForm = styled.TextInput.attrs(({ theme }) => ({
             border-width: ${theme.borderWidth};
             height: ${theme.formHeight};
             font-size: ${theme.textNormal};
+            color: ${({ theme }) => theme.colors.textColor};
         `
     }}
 `
@@ -71,6 +72,7 @@ const MaskForm = styled(TextInputMask).attrs(({ theme }) => ({
             height: ${theme.formHeight};
             font-size: ${theme.textNormal};
             color: ${theme.colors.inputTextColor};
+            color: ${({ theme }) => theme.colors.textColor};
         `
     }}
 `

@@ -26,8 +26,11 @@ const defaultOptions = (props, label) => {
         transparentCard: true,
         headerStyle: {
             backgroundColor: primary,
-            elevation: 0, //remove shadow on Android
-            shadowOpacity: 0 //remove shadow on iOS
+            elevation: 0,
+            shadowOpacity: 0
+        },
+        headerTitleStyle: {
+            fontWeight: '#fff'
         },
         headerTintColor: background,
         headerTitle: label,

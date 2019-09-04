@@ -5,7 +5,10 @@
   "scripts": {
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "run-release": "react-native run-android --variant=release",
+    "bundle-release": "cd android && ./gradlew bundleRelease && cd ../",
+    "apk-release": "cd android && ./gradlew assembleRelease && cd ../ && open ./android/app/build/outputs/apk"
   },
   "dependencies": {
     "axios": "^0.19.0",

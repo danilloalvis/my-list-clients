@@ -7,7 +7,7 @@
  */
 
 import React, { useState, useEffect } from 'react'
-import { Parallax, Input, ItemClient } from '../../components'
+import { Parallax, Loading, ItemClient } from '../../components'
 import { FlatList } from 'react-native-gesture-handler'
 import { Container, Search, SearchContainer } from './home.styled'
 const _clients = [
@@ -111,16 +111,19 @@ const HomeScreen = ({ navigation }) => {
         )
     }
     return (
-        <Parallax headerHeight={130} headerComponent={_header}>
-            <Container>
-                <FlatList
-                    data={clients}
-                    renderItem={_renderItems}
-                    scrollEnabled={false}
-                    keyExtractor={(item, index) => `client${index}`}
-                />
-            </Container>
-        </Parallax>
+        <Container>
+            <Parallax headerHeight={130} headerComponent={_header}>
+                <Container>
+                    <FlatList
+                        data={clients}
+                        renderItem={_renderItems}
+                        scrollEnabled={false}
+                        keyExtractor={(item, index) => `client${index}`}
+                    />
+                </Container>
+            </Parallax>
+            <Loading />
+        </Container>
     )
 }
 

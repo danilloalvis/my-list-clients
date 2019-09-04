@@ -61,15 +61,7 @@ const HomeScreen = ({ navigation, isFocused }) => {
     }
 
     const _renderItems = ({ item, index }) => {
-        return (
-            <ItemClient
-                cpf={item.cpf}
-                name={item.name}
-                dob={item.birthdate}
-                index={index}
-                onPress={() => navigation.navigate('UpdateScreen', { client: item })}
-            />
-        )
+        return <ItemClient client={item} index={index} onRemoved={_getClients} />
     }
     return (
         <Container>

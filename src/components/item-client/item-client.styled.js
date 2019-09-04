@@ -8,7 +8,7 @@ const Container = styled(Touchable)`
     align-content: center;
     align-items: center;
     background-color: ${({ theme, index }) =>
-        index % 2 == 0 ? theme.colors.backgroundAccent : 'transparent'};
+        index % 2 == 0 ? theme.colors.backgroundAccent : theme.colors.background};
 `
 
 const ContainerInfo = styled.View`

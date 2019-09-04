@@ -6,23 +6,20 @@
  * @flow
  */
 
-import React, {Fragment} from 'react';
-import {StatusBar, View} from 'react-native';
-import AppNavigation from './navigation';
-import {withTheme} from 'styled-components';
+import React, { Fragment } from 'react'
+import { StatusBar, View } from 'react-native'
+import AppNavigation from './navigation'
+import { withTheme } from 'styled-components'
 
-const Main = ({theme}) => {
-  return (
-    <Fragment>
-      <View style={{flex: 1}}>
-        <StatusBar
-          backgroundColor={theme.colors.primary}
-          barStyle="dark-content"
-        />
-        <AppNavigation />
-      </View>
-    </Fragment>
-  );
-};
+const Main = ({ theme }) => {
+    return (
+        <Fragment>
+            <View style={{ flex: 1 }}>
+                <StatusBar backgroundColor={theme.colors.primary} barStyle='light-content' />
+                <AppNavigation />
+            </View>
+        </Fragment>
+    )
+}
 
-export default withTheme(Main);
+export default withTheme(Main)

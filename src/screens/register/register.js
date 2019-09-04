@@ -5,8 +5,9 @@ import { Input, DatePicker, Button } from '../../components'
 import Validator from '../../utils/validations'
 import { withFormik } from 'formik'
 import * as Yup from 'yup'
-
-const Register = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
+import moment from 'moment'
+const Register = ({ values, errors, touched, handleSubmit, setFieldValue, navigation }) => {
+    const client = navigation.getParam('client', null)
     return (
         <Container>
             <ContainerForms>
@@ -30,17 +31,31 @@ const Register = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
                     errorMessage={touched.birthdate && errors.birthdate}
                 />
             </ContainerForms>
-            <Button title='Salvar' onPress={handleSubmit} />
+            <Button title={client ? 'Atualizar' : 'Salvar'} onPress={handleSubmit} />
         </Container>
     )
 }
 
+Register.navigationOptions = ({ navigation }) => {
+    const client = navigation.getParam('client', null)
+    return {
+        title: client ? 'Atualizar' : 'Cadastro'
+    }
+}
+
 export default RegisterScreen = withFormik({
-    mapPropsToValues: () => ({
-        name: '',
-        birthdate: '',
-        cpf: ''
-    }),
+    mapPropsToValues: ({ navigation }) => {
+        const client = navigation.getParam('client', null)
+        if (client) {
+            return { ...client, birthdate: moment(client.birthdate).format('DD/MM/YYYY') }
+        }
+
+        return {
+            name: '',
+            birthdate: '',
+            cpf: ''
+        }
+    },
 
     validationSchema: Yup.object().shape({
         name: Yup.string()

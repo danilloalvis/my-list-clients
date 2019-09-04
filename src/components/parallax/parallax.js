@@ -75,7 +75,7 @@ const Parallax = ({ headerHeight, children, headerComponent, theme, pullToRefres
     }
 
     const _bodyComponent = () => {
-        return <View style={{ flex: 1, marginTop: headerMaxHeight, marginBottom: 80 }}>{children}</View>
+        return <View style={{ flex: 1, marginTop: headerMaxHeight, paddingBottom: 80 }}>{children}</View>
     }
 
     const _scrollToTop = () => {

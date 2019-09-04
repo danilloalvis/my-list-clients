@@ -5,6 +5,7 @@ import Feather from 'react-native-vector-icons/Feather'
 
 const Container = styled.View`
     flex: 1;
+    background-color: ${({ theme }) => theme.colors.background};
 `
 
 const ScrollViewContainer = styled(Animated.ScrollView)`

@@ -86,7 +86,7 @@ export default RegisterScreen = withFormik({
 
             if (client) {
                 await ClientAPI.update(client.id, body)
-                Alert.alert('Sucesso!', 'Cliente Atualizado com sucesso')
+                Alert.alert('Sucesso!', 'Cliente atualizado com sucesso')
             } else {
                 Alert.alert('Sucesso!', 'Cadastro realizado com sucesso')
                 resetForm()

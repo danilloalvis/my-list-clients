@@ -27,14 +27,13 @@ const HomeScreen = ({ navigation, isFocused }) => {
 
     useEffect(() => {
         _filterClienta()
-    }, [search])
+    }, [totalClients, search])
 
     const _getClients = async () => {
         setLoading(true)
         try {
             const result = await ClientAPI.list()
-            setTotalClients(result)
-            _filterClienta()
+            setTotalClients(result, () => {})
             setLoading(false)
         } catch (err) {
             setLoading(false)
@@ -44,7 +43,9 @@ const HomeScreen = ({ navigation, isFocused }) => {
     const _filterClienta = () => {
         if (search) {
             const clients = totalClients.filter(
-                item => item.name.toLocaleUpperCase().includes(search) || item.cpf.includes(search)
+                item =>
+                    item.name.toLocaleUpperCase().includes(search.toLocaleUpperCase()) ||
+                    item.cpf.includes(search)
             )
             setClients(clients)
         } else {

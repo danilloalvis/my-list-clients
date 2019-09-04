@@ -28,7 +28,7 @@ class ItemClient extends PureComponent {
     }
 
     _goToEdit = () => {
-        const { client } = this.props
+        const { client, navigation } = this.props
         navigation.navigate('UpdateScreen', { client: client })
     }
 
@@ -54,7 +54,7 @@ class ItemClient extends PureComponent {
             if (onRemoved) {
                 onRemoved()
             }
-            Alert.alert('Cliente Removido com sucesso')
+            Alert.alert('Cliente removido com sucesso')
         } catch (err) {
             Alert.alert(err)
         }

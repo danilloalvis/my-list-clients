@@ -58,7 +58,7 @@ const Parallax = ({ headerHeight, children, headerComponent, theme, pullToRefres
 
     const floatButton = animatedScrollY.interpolate({
         inputRange: [0, headerScrollDistance],
-        outputRange: [0, -headerHeight - 50],
+        outputRange: [0, -headerHeight - 20],
         extrapolate: 'clamp'
     })
 
@@ -132,7 +132,7 @@ const Parallax = ({ headerHeight, children, headerComponent, theme, pullToRefres
             </Header>
             <FloatButton
                 style={{
-                    bottom: -headerHeight,
+                    bottom: -headerHeight + 30,
                     transform: [{ translateY: floatButton }]
                 }}
             >

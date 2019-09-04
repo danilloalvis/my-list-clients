@@ -12,7 +12,6 @@ import { FlatList } from 'react-native-gesture-handler'
 import { Container, Search, SearchContainer } from './home.styled'
 import { ClientAPI } from '../../api'
 import { withNavigationFocus } from 'react-navigation'
-import { View } from 'react-native'
 
 const HomeScreen = ({ navigation, isFocused }) => {
     const [loading, setLoading] = useState(false)
@@ -82,7 +81,6 @@ const HomeScreen = ({ navigation, isFocused }) => {
                         scrollEnabled={false}
                         keyExtractor={(item, index) => `client${index}`}
                     />
-                    <View style={{ height: 1200 }} />
                 </Container>
             </Parallax>
             <Loading show={loading} />

@@ -29,9 +29,6 @@ const defaultOptions = (props, label) => {
             elevation: 0,
             shadowOpacity: 0
         },
-        headerTitleStyle: {
-            fontWeight: '#fff'
-        },
         headerTintColor: background,
         headerTitle: label,
         headerLeft: <MenuButton color={background} openMenu={() => navigation.openDrawer()} />

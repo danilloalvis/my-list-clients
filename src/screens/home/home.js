@@ -7,86 +7,28 @@
  */
 
 import React, { useState, useEffect } from 'react'
-import { Parallax, Loading, ItemClient } from '../../components'
+import { Parallax, ItemClient, Loading } from '../../components'
 import { FlatList } from 'react-native-gesture-handler'
 import { Container, Search, SearchContainer } from './home.styled'
-const _clients = [
-    {
-        name: 'Carl Jhonson',
-        cpf: '12345678901',
-        birthdate: '1970-01-01'
-    },
-    {
-        name: 'Danilo Torquato',
-        cpf: '99999999999',
-        birthdate: '1994-04-01'
-    },
-    {
-        name: 'Carl Jhonson',
-        cpf: '12345678901',
-        birthdate: '1970-01-01'
-    },
-    {
-        name: 'Carl Jhonson',
-        cpf: '12345678901',
-        birthdate: '1970-01-01'
-    },
-    {
-        name: 'Carl Jhonson',
-        cpf: '12345678901',
-        birthdate: '1970-01-01'
-    },
-    {
-        name: 'Carl Jhonson',
-        cpf: '12345678901',
-        birthdate: '1970-01-01'
-    },
-    {
-        name: 'Carl Jhonson',
-        cpf: '12345678901',
-        birthdate: '1970-01-01'
-    },
-    {
-        name: 'Carl Jhonson',
-        cpf: '12345678901',
-        birthdate: '1970-01-01'
-    },
-    {
-        name: 'Carl Jhonson',
-        cpf: '12345678901',
-        birthdate: '1970-01-01'
-    },
-    {
-        name: 'Carl Jhonson',
-        cpf: '12345678901',
-        birthdate: '1970-01-01'
-    },
-    {
-        name: 'Carl Jhonson',
-        cpf: '12345678901',
-        birthdate: '1970-01-01'
-    },
-    {
-        name: 'Carl Jhonson',
-        cpf: '12345678901',
-        birthdate: '1970-01-01'
-    }
-]
-const HomeScreen = ({ navigation }) => {
-    const [search, setSearch] = useState('')
-    const [totalClients, setTotalClients] = useState(_clients)
-    const [clients, setClients] = useState([])
-    const _header = () => {
-        return (
-            <SearchContainer style={{ height: 130 }}>
-                <Search value={search} onChangeText={setSearch} />
-            </SearchContainer>
-        )
-    }
+import { ClientAPI } from '../../api'
 
-    useEffect(() => {
-        setClients(totalClients)
-    }, [totalClients])
+const HomeScreen = ({ navigation }) => {
+    const [loading, setLoading] = useState(false)
+    const [search, setSearch] = useState('')
+    const [totalClients, setTotalClients] = useState([])
+    const [clients, setClients] = useState([])
+
+    useEffect(async () => {
+        setLoading(true)
+        try {
+            const result = await ClientAPI.list()
+            setTotalClients(result)
+            setClients(result)
+            setLoading(false)
+        } catch (err) {
+            setLoading(false)
+        }
+    }, [])
 
     useEffect(() => {
         if (search) {
@@ -98,6 +40,14 @@ const HomeScreen = ({ navigation }) => {
             setClients(totalClients)
         }
     }, [search])
+
+    const _header = () => {
+        return (
+            <SearchContainer style={{ height: 130 }}>
+                <Search value={search} onChangeText={setSearch} />
+            </SearchContainer>
+        )
+    }
 
     const _renderItems = ({ item, index }) => {
         return (
@@ -122,7 +72,7 @@ const HomeScreen = ({ navigation }) => {
                     />
                 </Container>
             </Parallax>
-            <Loading />
+            <Loading show={loading} />
         </Container>
     )
 }
